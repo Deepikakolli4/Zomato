@@ -1,0 +1,204 @@
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.header-logo {
+    height: 27px;
+    max-width: 140px;
+    margin-right: 24px;
+}
+
+.header-right {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.header-location-search-container {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: var(--primary-box-shadow);
+    border: 1px solid var(--border-white);
+    width: 70%;
+    background-color: var(--primary-bg);
+}
+
+.location-wrapper {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    padding: 0 10px;
+}
+
+.location-icon-name {
+    display: flex;
+    align-items: center;
+    color: var(--zomato-gray);
+}
+
+.location-icon {
+    color: var(--zomato-red);
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.location-search-seperator {
+    height: 28px; 
+    border: 0.5px solid var(--gray);
+    margin: 0 12px;
+ }
+
+.header-searchbar {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.search-icon {
+    font-size: 20px;
+    color: var(--zomato-gray);
+    margin: 0 12px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    width: 100%; 
+    font-size: 14px;
+    padding: 0 8px;
+}
+
+.profile-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    align-items: center;
+}
+
+.header-profile-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.header-username {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.profile-options-icon {
+    font-size: 20px;
+}
+.auth-buttons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-left: 12px;
+}
+.login-button {
+    height: 45px;
+    width: 220px;
+    background-color: var(--primary-color);
+    color: var(--primary-bg);
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.signup-button {
+    margin-bottom: 10px;
+    height: 45px;
+    width: 100px;
+    background-color: var(--secondary-color); 
+    color: var(--primary-bg);
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-button:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+.signup-button:hover {
+    background-color: var(--secondary-hover); /* Adjust hover effect for the signup button */
+    transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .auth-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-button, .signup-button {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+.profile-section {
+    display: flex;
+    align-items: center; /* Aligns the items vertically centered */
+    gap: 12px; /* Adds space between username and logout button */
+  }
+  
+  .header-username {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--zomato-gray); /* Optional, customize as needed */
+  }
+  
+  .logout-button {
+    height: 45px;
+    width: 120px; 
+    background-color: var(--primary-color);
+    color: var(--primary-bg);
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .logout-button:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+  }
+  .location-dropdown {
+    width: 124px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid var(--border-white);
+    background-color: var(--primary-bg);
+    color: var(--zomato-gray);
+  }
+  
+  .location-dropdown:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+  
+
+  
+  

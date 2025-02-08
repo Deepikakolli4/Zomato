@@ -1,0 +1,108 @@
+    .signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("https://source.unsplash.com/1600x900/?food,dining") center/cover no-repeat;
+  }
+  
+  .signup-box {
+    width: 320px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-align: center;
+    background-color: var(--background-color);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .checkbox-container input {
+    margin-right: 8px;
+  }
+  
+  .checkbox-container a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .checkbox-container a:hover {
+    text-decoration: underline;
+  }
+  
+  .signup-button, .google-signup {
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .signup-button:hover, .google-signup:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  .signup-button:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--divider-color);
+  }
+  
+  .or-text {
+    margin: 0 10px;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  .login-link {
+    margin-top: 15px;
+  }
+  
+  .login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  p{
+    color: var(--zomato-red);
+    font-size: 14px;
+  }
+  

@@ -1,0 +1,78 @@
+.login-container {
+      margin:10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url("https://source.unsplash.com/1600x900/?food,dining") center/cover no-repeat;
+  }
+  
+  .login-box {
+    width: 320px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-align: center;
+    background-color: var(--background-color);
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .otp-button, .gmail-login {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .otp-button:hover, .gmail-login:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--divider-color);
+  }
+  
+  .or-text {
+    margin: 0 10px;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  .create-account {
+    margin-top: 15px;
+  }
+  
+  .create-account a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .create-account a:hover {
+    text-decoration: underline;
+  }

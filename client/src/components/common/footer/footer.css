@@ -39,9 +39,9 @@
     transition: color 0.3s;
 }
 
-.footer-links a:hover {
+/* .footer-links a:hover {
     color: var(--zomato-red);
-}
+} */
 
 .footer-note {
     font-size: 12px;
@@ -49,9 +49,9 @@
     color: var(--zomato-gray);
 }
 
-.footer:hover {
+/* .footer:hover {
     background-color: var(--primary-hover);
-}
+} */
 
 @media (max-width: 768px) {
     .footer-content {

@@ -19,7 +19,7 @@ const ExploreSection = () => {
       // Extract the relevant data from the response
       const restaurants = response.data.restaurants[0].restaurants; // Assuming restaurants array is nested inside another object
       setRestaurantsData(restaurants);
-      setTotalPages(Math.ceil(response.data.restaurants[0].results_found / 10)); // Adjust total pages calculation
+      setTotalPages(Math.ceil(response.data.total / 10)); // Adjust total pages calculation
     } catch (error) {
       console.error("Error fetching restaurants:", error);
     }
@@ -86,3 +86,5 @@ const ExploreSection = () => {
 };
 
 export default ExploreSection;
+
+

@@ -14,17 +14,12 @@ const Header = () => {
         const storedUsername = localStorage.getItem('username');
         if (token) {
             setIsLoggedIn(true);
-            setUsername(storedUsername);
+            setUsername(storedUsername || 'User');
         }
     }, []);
 
-    const handleLoginClick = () => {
-        navigate('/login');
-    };
-
-    const handleSignUpClick = () => {
-        navigate('/signup');
-    };
+    const handleLoginClick = () => navigate('/login');
+    const handleSignUpClick = () => navigate('/signup');
 
     const handleLogout = () => {
         localStorage.removeItem('authToken');
@@ -34,82 +29,65 @@ const Header = () => {
         navigate('/login');
     };
 
-    const handleLocationChange = (e) => {
-        setSelectedLocation(e.target.value);
-    };
-
-    const handleSearchQueryChange = (e) => {
-        setSearchQuery(e.target.value);
-    };
-
+    const handleLocationChange = (e) => setSelectedLocation(e.target.value);
+    const handleSearchQueryChange = (e) => setSearchQuery(e.target.value);
+    
     const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
+        if (e.key === 'Enter') handleSearch();
     };
 
     const handleSearch = async () => {
-        let url = '';
-
-        // Input Validation:  Trim the search query and check for emptiness
         const trimmedSearchQuery = searchQuery.trim();
         if (!trimmedSearchQuery) {
             console.warn('Search query is empty.');
             return;
         }
-
-        // Construct the URL based on the search location
-        if (selectedLocation === 'id') {
-            url = `http://localhost:8000/restaurants/${trimmedSearchQuery}`;
-        } else if (selectedLocation === 'name') {
-            url = `http://localhost:8000/restaurants/name/${trimmedSearchQuery}`;
-        } else if (selectedLocation === 'location') {
-            url = `http://localhost:8000/restaurants/city/${trimmedSearchQuery}`;
-        } else {
-            console.error('Invalid search location selected.');
-            return;
+    
+        let url = '';
+        switch (selectedLocation) {
+            case 'id':
+                url = `http://localhost:8000/restaurants/${trimmedSearchQuery}`;
+                break;
+            case 'name':
+                url = `http://localhost:8000/restaurants/name/${trimmedSearchQuery}`;
+                break;
+            case 'city':
+                url = `http://localhost:8000/restaurants/city/${trimmedSearchQuery}`;
+                break;
+            case 'rating':
+                url = `http://localhost:8000/restaurants/rating/${trimmedSearchQuery}`;
+                break;
+            case 'address':
+                url = `http://localhost:8000/restaurants/address/${encodeURIComponent(trimmedSearchQuery)}`;
+                break;
+            default:
+                console.error('Invalid search type selected.');
+                return;
         }
-
-        if (!url) {
-            console.error('No search option selected or invalid search query');
-            return;
-        }
-
+    
         try {
             const response = await fetch(url);
-
             if (!response.ok) {
                 console.error(`Error: HTTP error! Status: ${response.status}`);
-                try {
-                    const errorData = await response.json();
-                    console.error('Error Data:', errorData);
-                } catch (jsonError) {
-                    console.error('Could not parse error response as JSON:', jsonError);
-                }
                 return;
             }
-
+    
             const data = await response.json();
             console.log('Fetched data:', data);
+    
+            // Use normal map to extract restaurants
+            const restaurants = data;
 
-            if (!data || (Array.isArray(data) && data.length === 0) || (typeof data === 'object' && Object.keys(data).length === 0)) {
-                console.warn('No results found.');
-                navigate(`/restaurant-details?searchQuery=${trimmedSearchQuery}&location=${selectedLocation}`, {
-                    state: { results: null, noResults: true },
-                });
-                return;
-            }
-
-            navigate(`/restaurant-details?searchQuery=${trimmedSearchQuery}&location=${selectedLocation}`, {
-                state: { results: data },
-            });
-
+            console.log('Final restaurant list:', restaurants);
+    
+            // Navigate to RestaurantSearch and pass the mapped data
+            navigate("/restaurantSearch", { state: { restaurants } });
+    
         } catch (error) {
             console.error('Error fetching search results:', error);
         }
     };
-
-
+    
     return (
         <div className="max-width header">
             <img
@@ -120,19 +98,17 @@ const Header = () => {
             <div className="header-right">
                 <div className="header-location-search-container">
                     <div className="location-wrapper">
-                        <select
-                            className="location-dropdown"
-                            value={selectedLocation}
-                            onChange={handleLocationChange}
-                        >
+                        <select className="location-dropdown" value={selectedLocation} onChange={handleLocationChange}>
                             <option value="id">Search by ID</option>
                             <option value="name">Search by Name</option>
-                            <option value="location">Search by Location</option>
+                            <option value="city">Search by City</option>
+                            <option value="rating">Search by Rating</option>
+                            <option value="address">Search by Address</option>
                         </select>
                     </div>
                     <div className="header-searchbar">
                         <input
-                            placeholder="search for restaurant, cuisine or a dish"
+                            placeholder="Search for restaurant, cuisine, or a dish"
                             className="search-input"
                             value={searchQuery}
                             onChange={handleSearchQueryChange}
@@ -140,7 +116,6 @@ const Header = () => {
                         />
                     </div>
                 </div>
-
                 <div className="auth-buttons">
                     {isLoggedIn ? (
                         <div className="profile-section">
@@ -150,18 +125,12 @@ const Header = () => {
                                 className="header-profile-image"
                             />
                             <span className="header-username">{username}</span>
-                            <button className="logout-button" onClick={handleLogout}>
-                                Logout
-                            </button>
+                            <button className="logout-button" onClick={handleLogout}>Logout</button>
                         </div>
                     ) : (
                         <div className="auth-buttons">
-                            <button className="login-button" onClick={handleLoginClick}>
-                                Login
-                            </button>
-                            <button className="signup-button" onClick={handleSignUpClick}>
-                                Sign Up
-                            </button>
+                            <button className="login-button" onClick={handleLoginClick}>Login</button>
+                            <button className="signup-button" onClick={handleSignUpClick}>Sign Up</button>
                         </div>
                     )}
                 </div>
